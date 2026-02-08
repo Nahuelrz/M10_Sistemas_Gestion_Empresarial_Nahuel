@@ -1,60 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="school.list">
-      <field name="name">school list</field>
-      <field name="model">school.school</field>
-      <field name="arch" type="xml">
-        <list>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </list>
-      </field>
+    
+    <record id="view_school_class_tree" model="ir.ui.view">
+        <field name="name">school.class.tree</field>
+        <field name="model">school.class</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="grade"/>
+                <field name="classroom"/>
+                <field name="teacher_id"/>
+            </list>
+        </field>
     </record>
--->
-
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="school.action_window">
-      <field name="name">school window</field>
-      <field name="res_model">school.school</field>
-      <field name="view_mode">list,form</field>
+    
+    <record id="view_school_class_form" model="ir.ui.view">
+        <field name="name">school.class.form</field>
+        <field name="model">school.class</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="grade"/>
+                            <field name="classroom"/>
+                        </group>
+                        <group>
+                            <field name="teacher_id"/>
+                            <field name="state_end"/>
+                            <field name="student_number"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" placeholder="Descripción de la clase..."/>
+                    </group>
+                    <notebook>
+                        <page string="Estudiantes">
+                            <field name="student_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="last_name"/>
+                                    <field name="dni"/>
+                                    <field name="age"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
     </record>
--->
-
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="school.action_server">
-      <field name="name">school server</field>
-      <field name="model_id" ref="model_school_school"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "list,form",
-          "res_model": model._name,
-        }
-      </field>
+    
+    <record id="view_school_student_tree" model="ir.ui.view">
+        <field name="name">school.student.tree</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="last_name"/>
+                <field name="dni"/>
+                <field name="class_id"/>
+                <field name="age"/>
+            </list>
+        </field>
     </record>
--->
-
-    <!-- Top menu item -->
-<!--
-    <menuitem name="school" id="school.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="school.menu_1" parent="school.menu_root"/>
-    <menuitem name="Menu 2" id="school.menu_2" parent="school.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="school.menu_1_list" parent="school.menu_1"
-              action="school.action_window"/>
-    <menuitem name="Server to list" id="school" parent="school.menu_2"
-              action="school.action_server"/>
--->
-  </data>
+    
+    <record id="view_school_student_form" model="ir.ui.view">
+        <field name="name">school.student.form</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="last_name"/>
+                            <field name="dni"/>
+                        </group>
+                        <group>
+                            <field name="birthdate"/>
+                            <field name="age"/>
+                            <field name="active"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="class_id"/>
+                    </group>
+                    <notebook>
+                        <page string="Eventos">
+                            <field name="event_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="state"/>
+                                    <field name="type"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_school_event_tree" model="ir.ui.view">
+        <field name="name">school.event.tree</field>
+        <field name="model">school.event</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="state"/>
+                <field name="type"/>
+            </list>
+        </field>
+    </record>
+    
+    <record id="view_school_event_form" model="ir.ui.view">
+        <field name="name">school.event.form</field>
+        <field name="model">school.event</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="state"/>
+                        </group>
+                        <group>
+                            <field name="type"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" placeholder="Descripción del evento..."/>
+                    </group>
+                    <notebook>
+                        <page string="Estudiantes Involucrados">
+                            <field name="student_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="last_name"/>
+                                    <field name="class_id"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="view_school_event_calendar" model="ir.ui.view">
+        <field name="name">school.event.calendar</field>
+        <field name="model">school.event</field>
+        <field name="arch" type="xml">
+            <calendar string="Calendario de Eventos" 
+                      date_start="state" 
+                      color="type" 
+                      mode="month">
+                <field name="name"/>
+                <field name="type"/>
+            </calendar>
+        </field>
+    </record>
+    
+    <record id="view_school_event_search" model="ir.ui.view">
+        <field name="name">school.event.search</field>
+        <field name="model">school.event</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="state"/>
+                <field name="student_ids"/>
+                
+                <filter string="Permisos" 
+                        name="filter_allowance" 
+                        domain="[('type','=','allowance')]"/>
+                <filter string="Retrasos" 
+                        name="filter_delay" 
+                        domain="[('type','=','delay')]"/>
+                <filter string="Felicitaciones" 
+                        name="filter_congratulations" 
+                        domain="[('type','=','congratulations')]"/>
+                <filter string="Comportamiento" 
+                        name="filter_behavior" 
+                        domain="[('type','=','behavior')]"/>
+                
+                <separator/>
+                
+                <filter string="Este mes" 
+                        name="filter_this_month" 
+                        domain="[('state','&gt;=', (context_today() - datetime.timedelta(days=context_today().day-1)).strftime('%Y-%m-%d')),
+                                 ('state','&lt;=', (context_today() + datetime.timedelta(days=31-context_today().day)).strftime('%Y-%m-%d'))]"/>
+                
+                <group expand="0" string="Agrupar por">
+                    <filter string="Tipo de Evento" 
+                            name="group_type" 
+                            context="{'group_by':'type'}"/>
+                    <filter string="Fecha" 
+                            name="group_state" 
+                            context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    
+    <record id="action_school_class" model="ir.actions.act_window">
+        <field name="name">Clases</field>
+        <field name="res_model">school.class</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear una nueva clase
+            </p>
+        </field>
+    </record>
+    
+    <record id="action_school_student" model="ir.actions.act_window">
+        <field name="name">Estudiantes</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear un nuevo estudiante
+            </p>
+        </field>
+    </record>
+    
+    <record id="action_school_event" model="ir.actions.act_window">
+        <field name="name">Eventos</field>
+        <field name="res_model">school.event</field>
+        <field name="view_mode">list,form,calendar</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear un nuevo evento
+            </p>
+        </field>
+    </record>
+    
 </odoo>
