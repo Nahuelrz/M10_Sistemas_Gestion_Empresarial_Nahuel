@@ -33,7 +33,7 @@
                         </group>
                     </group>
                     <group>
-                        <field name="description" placeholder="Descripción de la clase..."/>
+                        <field name="description" placeholder="Descripción de la clase"/>
                     </group>
                     <notebook>
                         <page string="Estudiantes">
@@ -173,33 +173,13 @@
                 <field name="state"/>
                 <field name="student_ids"/>
                 
-                <filter string="Permisos" 
-                        name="filter_allowance" 
-                        domain="[('type','=','allowance')]"/>
-                <filter string="Retrasos" 
-                        name="filter_delay" 
-                        domain="[('type','=','delay')]"/>
-                <filter string="Felicitaciones" 
-                        name="filter_congratulations" 
-                        domain="[('type','=','congratulations')]"/>
-                <filter string="Comportamiento" 
-                        name="filter_behavior" 
-                        domain="[('type','=','behavior')]"/>
-                
-                <separator/>
-                
-                <filter string="Este mes" 
-                        name="filter_this_month" 
-                        domain="[('state','&gt;=', (context_today() - datetime.timedelta(days=context_today().day-1)).strftime('%Y-%m-%d')),
-                                 ('state','&lt;=', (context_today() + datetime.timedelta(days=31-context_today().day)).strftime('%Y-%m-%d'))]"/>
-                
                 <group expand="0" string="Agrupar por">
-                    <filter string="Tipo de Evento" 
+                    <filter string="Tipo" 
                             name="group_type" 
                             context="{'group_by':'type'}"/>
-                    <filter string="Fecha" 
-                            name="group_state" 
-                            context="{'group_by':'state'}"/>
+                    <filter string="Mes" 
+                            name="group_month" 
+                            context="{'group_by':'state:month'}"/>
                 </group>
             </search>
         </field>
