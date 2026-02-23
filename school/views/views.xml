@@ -91,9 +91,9 @@
                         <page string="Eventos">
                             <field name="event_ids">
                                 <list>
-                                    <field name="name"/>
-                                    <field name="state"/>
                                     <field name="type"/>
+                                    <field name="classroom_id"/>
+                                    <field name="state"/>
                                 </list>
                             </field>
                         </page>
@@ -108,9 +108,9 @@
         <field name="model">school.event</field>
         <field name="arch" type="xml">
             <list>
-                <field name="name"/>
-                <field name="state"/>
                 <field name="type"/>
+                <field name="classroom_id"/>
+                <field name="state"/>
             </list>
         </field>
     </record>
@@ -123,11 +123,11 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name"/>
-                            <field name="state"/>
+                            <field name="type"/>
+                            <field name="classroom_id"/>
                         </group>
                         <group>
-                            <field name="type"/>
+                            <field name="state"/>
                         </group>
                     </group>
                     <group>
@@ -157,8 +157,8 @@
                       date_start="state" 
                       color="type" 
                       mode="month">
-                <field name="name"/>
                 <field name="type"/>
+                <field name="classroom_id"/>
             </calendar>
         </field>
     </record>
@@ -168,8 +168,8 @@
         <field name="model">school.event</field>
         <field name="arch" type="xml">
             <search>
-                <field name="name"/>
                 <field name="type"/>
+                <field name="classroom_id"/>
                 <field name="state"/>
                 <field name="student_ids"/>
                 

@@ -1,22 +1,16 @@
 # -*- coding: utf-8 -*-
-# from odoo import http
+from odoo import http
+from odoo.http import request
 
 
-# class School(http.Controller):
-#     @http.route('/school/school', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
-
-#     @http.route('/school/school/objects', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('school.listing', {
-#             'root': '/school/school',
-#             'objects': http.request.env['school.school'].search([]),
-#         })
-
-#     @http.route('/school/school/objects/<model("school.school"):obj>', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('school.object', {
-#             'object': obj
-#         })
+class SchoolController(http.Controller):
+    @http.route('/school/events/', auth='public', type='http')
+    def list_events(self, **kw):
+        events = request.env['school.event'].sudo().search([])
+        event_names = events.name_get()
+        result = "<h1>Lista de Eventos del Colegio</h1><ul>"
+        for _id, name in event_names:
+            result += "<li>%s</li>" % name
+        result += "</ul>"
+        return result
 

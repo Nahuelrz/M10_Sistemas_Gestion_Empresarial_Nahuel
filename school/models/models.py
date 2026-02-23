@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from datetime import date
 
 
 class student(models.Model):
@@ -12,7 +13,7 @@ class student(models.Model):
     dni = fields.Char(required=True)
     birthdate = fields.Date()
     active = fields.Boolean(default=True)
-    age = fields.Integer()
+    age = fields.Integer(compute='_compute_age')
     
     class_id = fields.Many2one('school.class')
     event_ids = fields.Many2many('school.event')
@@ -20,6 +21,17 @@ class student(models.Model):
     _sql_constraints = [
         ('dni_unique', 'UNIQUE(dni)', 'El DNI debe ser único')
     ]
+
+    @api.depends('birthdate')
+    def _compute_age(self):
+        today = date.today()
+        for record in self:
+            if record.birthdate:
+                record.age = today.year - record.birthdate.year - (
+                    (today.month, today.day) < (record.birthdate.month, record.birthdate.day)
+                )
+            else:
+                record.age = 0
 
 
 class school_class(models.Model):
@@ -42,10 +54,19 @@ class event(models.Model):
     _description = 'school.event'
     _order = 'state desc'
 
-    name = fields.Char()
     state = fields.Date()
     type = fields.Selection([('allowance', 'Permiso'), ('delay', 'Retraso'), ('congratulations', 'Felicitaciones'), ('behavior', 'Comportamiento')])
     description = fields.Text()
     
+    classroom_id = fields.Many2one('school.class', string='Clase')
     student_ids = fields.Many2many('school.student')
+
+    def name_get(self):
+        result = []
+        for record in self:
+            type_label = dict(self._fields['type'].selection).get(record.type, '')
+            classroom_name = record.classroom_id.name or ''
+            name = "%s - %s" % (type_label, classroom_name)
+            result.append((record.id, name))
+        return result
 
