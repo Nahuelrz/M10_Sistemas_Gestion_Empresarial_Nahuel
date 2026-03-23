@@ -14,6 +14,7 @@
 
     'author': "My Company",
     'website': "https://www.yourcompany.com",
+    'license': 'LGPL-3',
 
     # Categories can be used to filter modules in modules listing
     # Check https://github.com/odoo/odoo/blob/15.0/odoo/addons/base/data/ir_module_category_data.xml
@@ -26,6 +27,7 @@
 
     # always loaded
     'data': [
+        'security/security.xml',
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/menu.xml',

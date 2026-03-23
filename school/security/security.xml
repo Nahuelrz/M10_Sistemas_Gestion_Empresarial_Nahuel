@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- Categoría de módulo para School -->
+        <record id="module_category_school" model="ir.module.category">
+            <field name="name">School</field>
+            <field name="description">Gestión de módulo School</field>
+            <field name="sequence">40</field>
+        </record>
+
+        <!-- Grupo de Docentes -->
+        <record id="group_school_teacher" model="res.groups">
+            <field name="name">Docente</field>
+            <field name="category_id" ref="module_category_school"/>
+            <field name="comment">Grupo para profesores de la escuela</field>
+        </record>
+
+        <!-- Grupo de Director (hereda permisos de Docente) -->
+        <record id="group_school_director" model="res.groups">
+            <field name="name">Director</field>
+            <field name="category_id" ref="module_category_school"/>
+            <field name="comment">Grupo para directores de la escuela</field>
+            <field name="implied_ids" eval="[(4, ref('group_school_teacher'))]"/>
+        </record>
+
+    </data>
+</odoo>

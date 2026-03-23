@@ -1,4 +1,12 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_school_student,school.student,model_school_student,base.group_user,1,1,1,1
-access_school_class,school.class,model_school_class,base.group_user,1,1,1,1
-access_school_event,school.event,model_school_event,base.group_user,1,1,1,1
+access_school_student_user,access_school_student_user,model_school_student,base.group_user,1,0,0,0
+access_school_class_user,access_school_class_user,model_school_class,base.group_user,1,0,0,0
+access_school_event_user,access_school_event_user,model_school_event,base.group_user,1,0,0,0
+access_school_student_teacher,access_school_student_teacher,model_school_student,school.group_school_teacher,1,0,0,0
+access_school_class_teacher,access_school_class_teacher,model_school_class,school.group_school_teacher,1,0,0,0
+access_school_event_teacher,access_school_event_teacher,model_school_event,school.group_school_teacher,1,0,1,0
+access_hr_employee_teacher,access_hr_employee_teacher,hr.model_hr_employee,school.group_school_teacher,1,0,0,0
+access_hr_employee_category_teacher,access_hr_employee_category_teacher,hr.model_hr_employee_category,school.group_school_teacher,1,0,0,0
+access_school_student_director,access_school_student_director,model_school_student,school.group_school_director,1,1,1,1
+access_school_class_director,access_school_class_director,model_school_class,school.group_school_director,1,1,1,1
+access_school_event_director,access_school_event_director,model_school_event,school.group_school_director,1,1,1,1

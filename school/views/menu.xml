@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     
-    <menuitem id="school_menu_root" name="School" sequence="10"/>
+    <menuitem id="school_menu_root" name="School" sequence="10" action="action_school_main"/>
     
     <menuitem id="menu_school_class" 
-              name="Class" 
+              name="Clases" 
               parent="school_menu_root" 
               action="action_school_class" 
               sequence="10"/>
     
     <menuitem id="menu_school_student" 
-              name="Students" 
+              name="Estudiantes" 
               parent="school_menu_root" 
               action="action_school_student" 
               sequence="20"/>
     
     <menuitem id="menu_school_event" 
-              name="Events" 
+              name="Eventos" 
               parent="school_menu_root" 
               action="action_school_event" 
               sequence="30"/>
