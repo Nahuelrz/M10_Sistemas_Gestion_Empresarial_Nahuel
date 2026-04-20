@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Herencia del formulario de empleado: añadir pestaña "School" -->
+    <record id="view_hr_employee_form_inherit_school" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherit.school</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="School">
+                    <group>
+                        <field name="is_teacher"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Herencia de la vista de búsqueda de empleados: añadir filtro "Profesores" -->
+    <record id="view_hr_employee_search_inherit_school" model="ir.ui.view">
+        <field name="name">hr.employee.search.inherit.school</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_team']" position="after">
+                <separator/>
+                <filter string="Profesores" name="is_teacher" domain="[('is_teacher', '=', True)]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
