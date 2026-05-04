@@ -1,0 +1,149 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* school
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"POT-Creation-Date: 2026-04-21 00:00+0000\n"
+"PO-Revision-Date: 2026-04-21 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+"Language: es\n"
+
+#. module: school
+#: model:ir.ui.menu,name:school.menu_school_class
+msgid "Clases"
+msgstr "Clases"
+
+#. module: school
+#: model:ir.ui.menu,name:school.menu_school_student
+msgid "Estudiantes"
+msgstr "Estudiantes"
+
+#. module: school
+#: model:ir.ui.menu,name:school.menu_school_event
+msgid "Eventos"
+msgstr "Eventos"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__name
+#: model:ir.model.fields,field_description:school.field_school_class__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__last_name
+msgid "Last Name"
+msgstr "Apellido"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__dni
+msgid "DNI"
+msgstr "DNI"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__birthdate
+msgid "Birthdate"
+msgstr "Fecha de Nacimiento"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__age
+msgid "Age"
+msgstr "Edad"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_student__class_id
+#: model:ir.model.fields,field_description:school.field_school_event__classroom_id
+msgid "Class"
+msgstr "Clase"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__grade
+msgid "Grade"
+msgstr "Grado"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__classroom
+msgid "Classroom"
+msgstr "Aula"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__teacher_id
+msgid "Teacher"
+msgstr "Profesor"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__state_end
+msgid "End Date"
+msgstr "Fecha de Fin"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__student_number
+msgid "Student Number"
+msgstr "Numero de Estudiantes"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_class__description
+#: model:ir.model.fields,field_description:school.field_school_event__description
+msgid "Description"
+msgstr "Descripcion"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_event__state
+msgid "State"
+msgstr "Fecha"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_event__type
+msgid "Type"
+msgstr "Tipo"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_event__student_ids
+msgid "Students"
+msgstr "Estudiantes"
+
+#. module: school
+#: model:ir.model.fields,field_description:hr.field_hr_employee__is_teacher
+msgid "Is Teacher"
+msgstr "Es Profesor"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_hr_employee_form_inherit_school
+msgid "School"
+msgstr "Escuela"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_hr_employee_search_inherit_school
+msgid "Profesores"
+msgstr "Profesores"
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_event__type__allowance
+msgid "Permiso"
+msgstr "Permiso"
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_event__type__delay
+msgid "Retraso"
+msgstr "Retraso"
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_event__type__congratulations
+msgid "Felicitaciones"
+msgstr "Felicitaciones"
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_event__type__behavior
+msgid "Comportamiento"
+msgstr "Comportamiento"

@@ -1,30 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-<!--
-          <record id="object0" model="school.school">
-            <field name="name">Object 0</field>
-            <field name="value">0</field>
-          </record>
+    <data noupdate="0">
 
-          <record id="object1" model="school.school">
-            <field name="name">Object 1</field>
-            <field name="value">10</field>
-          </record>
+        <!-- ============================================ -->
+        <!-- USUARIOS Y EMPLEADOS -->
+        <!-- ============================================ -->
 
-          <record id="object2" model="school.school">
-            <field name="name">Object 2</field>
-            <field name="value">20</field>
-          </record>
+        <!-- Usuario Profesor 1 -->
+        <record id="user_teacher_1" model="res.users">
+            <field name="name">Juan García</field>
+            <field name="login">juan.garcia@school.local</field>
+            <field name="password">123456</field>
+            <field name="email">juan.garcia@school.local</field>
+            <field name="active">true</field>
+            <field name="groups_id" eval="[(4, ref('school.group_school_teacher'))]"/>
+        </record>
 
-          <record id="object3" model="school.school">
-            <field name="name">Object 3</field>
-            <field name="value">30</field>
-          </record>
+        <!-- Empleado Profesor 1 -->
+        <record id="employee_teacher_1" model="hr.employee">
+            <field name="name">Juan García López</field>
+            <field name="user_id" ref="user_teacher_1"/>
+            <field name="is_teacher">true</field>
+        </record>
 
-          <record id="object4" model="school.school">
-            <field name="name">Object 4</field>
-            <field name="value">40</field>
-          </record>
--->
+        <!-- Usuario Director -->
+        <record id="user_director_1" model="res.users">
+            <field name="name">María Rodríguez</field>
+            <field name="login">maria.rodriguez@school.local</field>
+            <field name="password">123456</field>
+            <field name="email">maria.rodriguez@school.local</field>
+            <field name="active">true</field>
+            <field name="groups_id" eval="[(4, ref('school.group_school_director'))]"/>
+        </record>
+
+        <!-- Empleado Director -->
+        <record id="employee_director_1" model="hr.employee">
+            <field name="name">María Rodríguez Pérez</field>
+            <field name="user_id" ref="user_director_1"/>
+            <field name="is_teacher">false</field>
+        </record>
+
+        <!-- ============================================ -->
+        <!-- CLASES -->
+        <!-- ============================================ -->
+
+        <!-- Clase 1º Primaria -->
+        <record id="class_1st_primary" model="school.class">
+            <field name="name">1º Primaria A</field>
+            <field name="grade">second</field>
+            <field name="classroom">101</field>
+            <field name="teacher_id" ref="employee_teacher_1"/>
+            <field name="state_end">2026-06-30</field>
+            <field name="student_number">25</field>
+            <field name="description">Clase de primer curso de educación primaria</field>
+        </record>
+
+        <!-- ============================================ -->
+        <!-- ESTUDIANTES -->
+        <!-- ============================================ -->
+
+        <!-- Alumno 1 -->
+        <record id="student_1" model="school.student">
+            <field name="name">Carlos</field>
+            <field name="last_name">Martínez García</field>
+            <field name="dni">12345678A</field>
+            <field name="birthdate">2018-03-15</field>
+            <field name="active">true</field>
+            <field name="class_id" ref="class_1st_primary"/>
+        </record>
+
+        <!-- Alumno 2 -->
+        <record id="student_2" model="school.student">
+            <field name="name">Laura</field>
+            <field name="last_name">López Fernández</field>
+            <field name="dni">87654321B</field>
+            <field name="birthdate">2018-05-22</field>
+            <field name="active">true</field>
+            <field name="class_id" ref="class_1st_primary"/>
+        </record>
+
+        <!-- ============================================ -->
+        <!-- EVENTOS -->
+        <!-- ============================================ -->
+
+        <!-- Evento 1: Felicitaciones para Carlos -->
+        <record id="event_1" model="school.event">
+            <field name="state">2026-04-15</field>
+            <field name="type">congratulations</field>
+            <field name="description">Excelente desempeño en la evaluación de matemáticas</field>
+            <field name="classroom_id" ref="class_1st_primary"/>
+            <field name="student_ids" eval="[(4, ref('student_1'))]"/>
+        </record>
+
+        <!-- Evento 2: Retraso de Laura -->
+        <record id="event_2" model="school.event">
+            <field name="state">2026-04-18</field>
+            <field name="type">delay</field>
+            <field name="description">Retraso en la entrega de tarea</field>
+            <field name="classroom_id" ref="class_1st_primary"/>
+            <field name="student_ids" eval="[(4, ref('student_2'))]"/>
+        </record>
+
     </data>
 </odoo>
